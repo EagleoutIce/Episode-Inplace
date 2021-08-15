@@ -1,0 +1,178 @@
+\errorcontextlines 999999
+\usepackage[ngerman]{babel}
+\PassOptionsToPackage{vlined,linesnumberedhidden}{algorithm2e}
+\usepackage[%
+    sopra-listings={encoding,cpalette,highlights},%
+    sopra-tables, color-palettes={addons},%
+    lecture-bibliography={biber,style=numeric-comp},%
+    util, lithie-boxes={germanenv,koma,overwrite},%
+    lithie-task-boxes={cpalette}, lecture-links={patchurl},%
+    lecture-personal-resize,
+    lecture-registers={disable}% would interfere with beamer
+]{lithie-util}
+
+\usepackage{forest}
+\usetikzlibrary{overlay-beamer-styles}
+
+\makeatletter
+\sol@list@define@styles{%
+  {keywordA: \@declaredcolor{sol@colors@lst@keywordA}\bfseries},%
+  {keywordC: \@declaredcolor{sol@colors@lst@keywordB}\bfseries},%
+}
+\makeatother
+
+\RestyleAlgo{plain}
+\def\sbfamily{\fontseries{sb}\selectfont}
+\def\textsb#1{{\sbfamily#1}}
+\SetKwSty{textsb}
+\SetKw{KwRet}{ret}
+\SetKwProg{Function}{def}{:}{}
+\SetKwIF{If}{ElseIf}{Else}{if}{:}{elif:}{else:}{}
+\SetKwFor{While}{while}{:}{}
+\lstset{lineskip=5.5pt}
+\lstfs{10}
+
+\DefinePalette{InplaceMerge}
+{Blau,bläulich: RGB(0, 114, 187)}
+{Orange,orangenfarben: RGB(255, 131, 53)}% Cadmium orange
+{Grün,grünlich: RGB(123, 181, 46)}
+{Gelb,gelblich: RGB(255, 200, 87)}
+\SetShadeContrast{45}
+\UsePalette{InplaceMerge}
+
+\usetheme[libs,nofootfade,centerfoot]{dividing-lines}
+\SetColorProfile*{paletteA}{paletteB}{paletteC}
+
+\usetikzlibrary{arrows.meta,decorations,decorations.pathreplacing,shapes.multipart,tikzmark,shapes.symbols}
+
+\def\info#1{\bgroup\scriptsize\textcolor{gray}{(#1)}\egroup}
+\SetAllLinkStyle{#1}
+\def\fillfont{\def\mdseries@sf{medium}\sffamily}
+\colorlet{lgray}{lightgray!48!white}
+\tikzset{
+    ldesc/.style={gray,font=\sffamily\sbfamily},
+    lrel/.style={fill=white,rounded corners,minimum width=28mm,minimum height=7.5mm,align=center},
+    lrel2/.style={fill=white,rounded corners,minimum width=28mm,minimum height=7.5mm*2,align=center},
+    lsf/.style={fill=white,rounded corners,minimum width=28mm,minimum height=7.5mm*2,align=center,
+        rectangle split, rectangle split parts=2},
+    blob/.style={circle,draw, minimum size=1.9em,align=center},
+    lblob/.style={blob,writ,font=\fillfont,#1},%
+    lblob/.default={fill=lgray, draw=lgray,text=black},
+    every picture/.append style={line join=round,line cap=round},%
+    every node/.append style={font=\sffamily},%
+    lblock/.style={block,writ,font=\fillfont,#1},%
+    lblock/.default={fill=lgray, draw=lgray,text=black},
+    block/.style={rectangle,draw, align=center, minimum height=1.25em,rounded corners=1.55pt},%
+}
+
+\newcommand\parallelcontent[3][t]{%
+    \begin{columns}[#1]
+    \begin{column}{.475\linewidth}#2\end{column}\hfill
+    \begin{column}{.475\linewidth}#3\end{column}
+    \end{columns}
+}
+
+\usepackage[glows]{tikzpingus}
+\usetikzlibrary{decorations.text,graphs}
+\hypersetup{colorlinks=false}
+
+\title{In-Place Merge Sort}
+\subtitle{Kompromisse, Lügen und Derivate.}
+\institute{SP, Universität Ulm}
+
+\author{Florian Sihler}
+\email{florian.sihler@uni-ulm.de}
+
+\date{\today}
+\outro{Ulm, \today}
+\license[]{All rights reserved}
+
+\def\PreTitlepage{\begingroup%
+\let\oldinserttitle\inserttitle% allow it to be white on second slide
+\let\oldinsertsubtitle\insertsubtitle% allow it to be white on second slide
+\colorlet{PINGU@WHITE}{pingu@white}% hacksies for the whites
+\only<2|handout:2>{\def\inserttitle{\color{pingu@white}\oldinserttitle}\def\insertsubtitle{\textcolor{pingu@white}{\oldinsertsubtitle}}}%
+\onslide<2|handout:2>{%
+\savebox0{\tikz{\pingu[lightsaber left=paletteC!90!white,left item angle=-20,eyes shiny,right wing grab,tie=paletteA!90!black,body=paletteA!20!black,lightsaber left length=2.35cm,lightsaber left outer glow factor=.09,cake-hat]}}%
+\begin{tikzpicture}[overlay,remember picture]%
+    % beamer does not support changes of full background easily. so we do hacksies
+    \pgfonlayer{background}
+    \path[fill,black!99] (current page.north west) rectangle (current page.south east);
+    \endpgfonlayer
+    \node[above right=.15cm,scale=.65,xshift=.15cm] (pingu) at(current page.south west) {\usebox0};
+    \node[below right,pingu@white,text width=.6\paperwidth,align=flush left] at(pingu.north east){Officially supported by the Ping-Ping-Uh-Uh-\allowbreak Foundation for Emotional Peeps. Peep n' peace and wa\ldots\ oh look, there's cake!};
+\end{tikzpicture}}%
+}
+\def\PostTitlepage{\endgroup}
+
+\addbibresource{./references.bib}
+
+\setcounter{tocdepth}{4}
+\newsavebox\pinguA \newsavebox\pinguB \newsavebox\pinguC \newsavebox\pinguD
+\newcommand*\mb[1]{$\underset{\text{\color{shadeD}\T{\strut\Large\textbullet}}}{\text{#1}}$}
+
+\usepackage[link]{qrcode}
+\outroright{\smash{\raisebox{1.33cm/2}{\qrcode[height=1.33cm]{https://github.com/EagleoutIce/Episode-Inplace}}}\begin{tikzpicture}[remember picture,overlay]
+    \node[above left,btdl@color@white,scale=.475] at (current page.south east) {\href{https://github.com/EagleoutIce/Episode-Inplace}{Slides and \LaTeX-sources on GitHub!}};
+\end{tikzpicture}}
+
+\def\treewidth{\linewidth}
+\newcommand*\tree[2][]{\downsize{\treewidth}{\begin{forest}for tree={lblob,minimum width=2.5em,s sep=4em-level*.5em,edge={line width=3pt,lgray,line cap=butt},#1}#2\end{forest}}}
+\forestset{w/.style={fill=shadeGray,draw=shadeGray,text opacity=.5,edge={shadeGray}},m/.style={fill=shadeA,draw=shadeA,edge={shadeGray}},g/.style={fill=shadeA,draw=shadeA}}%
+
+\hfuzz=60cm
+\makeatletter
+\def\mtx@blk{X}
+\def\mtx@k{6mm}
+% calculate the number of steps required to stay visible
+\mode<presentation>{
+\def\mtx@split@gol#1|handout:#2\@nil{\the\numexpr#1-\beamer@slideinframe\relax}
+\def\mtx@split@tar#1|handout:#2\@nil{}
+}\mode<handout>{% TODO: for handout, subtract handout trigger ids
+\def\mtx@split@gol#1|handout:#2\@nil{%
+    \ifnum\beamer@slideinframe=1
+    \the\numexpr#1-\triga\relax
+    \else\ifnum\beamer@slideinframe=2
+    \the\numexpr#1-\trigb\relax
+    \else\ifnum\beamer@slideinframe=3
+    \the\numexpr#1-\trigc\relax
+    \else\ifnum\beamer@slideinframe=4
+    \the\numexpr#1-\trigd\relax
+    \else\ifnum\beamer@slideinframe=5
+    \the\numexpr#1-\trige\relax
+    \ifnum\beamer@slideinframe=6
+    \the\numexpr#1-\trigf\relax
+    \fi\fi\fi\fi\fi\fi
+}
+\let\mtx@split@tar\mtx@split@gol
+}
+\tikzset{MTX@BLK/.style={rectangle,minimum size=\mtx@k,inner sep=\z@,outer sep=\z@,fill=#1,draw=gray!80!white,line width=.75\p@}}
+\def\Matrix#1#2#3#4#5#6#7#8#9{%
+\def\triga{#4}\def\trigb{#5}\def\trigc{#6}\def\trigd{#7}\def\trige{#8}\def\trigf{#9}
+\scope[scale=1.15,every node/.append style={transform shape}]
+\scope
+\clip[rounded corners=2\p@] (.5*\mtx@k, -.5*\mtx@k) rectangle ++(#2*\mtx@k, -#3*\mtx@k);
+\foreach[count=\y] \line in {#1} {
+    \foreach[count=\x] \tar/\gol/\ded in \line {
+        \ifx\tar\mtx@blk
+            \node[MTX@BLK=gray!38!white] (\x-\y) at (\x*\mtx@k, -\y*\mtx@k) {};
+        \else
+            \edef\mtx@tmp{\gol}%
+            % overdraw me baby
+            \node[MTX@BLK=white,text=lightgray] (\x-\y) at (\x*\mtx@k, -\y*\mtx@k) {\footnotesize\expandafter\mtx@split@tar\mtx@tmp\@nil};
+            \only<\tar>{
+                \node[MTX@BLK=shadeB,text=gray] (\x-\y) at (\x*\mtx@k, -\y*\mtx@k) {\footnotesize\expandafter\mtx@split@gol\mtx@tmp\@nil};
+            }
+            \only<\gol>{
+                \node[MTX@BLK=shadeA] (\x-\y) at (\x*\mtx@k, -\y*\mtx@k) {};
+            }
+            \only<\ded>{
+                \node[MTX@BLK=shadeGray] (\x-\y) at (\x*\mtx@k, -\y*\mtx@k) {\T{\color{gray!80!white}\textbullet}};
+            }
+        \fi\
+    }
+}
+\endscope
+\draw[rounded corners=2\p@,gray!80!white,line width=1.65\p@] (.5*\mtx@k, -.5*\mtx@k) rectangle ++(#2*\mtx@k, -#3*\mtx@k);
+\endscope}
+\makeatother

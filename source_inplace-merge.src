@@ -1,0 +1,144 @@
+\input{preamble}
+
+\begin{document}
+\section{Klassiker}
+\subsection{Merge Sort}
+\SidebarCite{gh:tikzpingus}
+
+{
+\def\List{\textcolor{gray}{List}}%
+\def\paramstyle#1{\textup{#1}}
+\def\list{\paramstyle{list}}\def\a{\paramstyle{a}}\def\b{\paramstyle{b}}
+\def\varstyle#1{\textup{#1}}
+\def\le{\varstyle{left}}\def\x{\varstyle{x}}\def\ri{\varstyle{right}}\def\me{\varstyle{merged}}
+
+\savebox\pinguA{\tikz{\pingu[wings wave,eyes wink]}}%
+
+% temp saveboxes
+\tikzset{
+    KK/.style={
+        /pingu/@block/.append style={fill=##1!35!white},
+        /pingu/@draw/.append style={draw=##1!35!white}
+    }
+}
+\newsavebox\PinguMsSeven
+\savebox\PinguMsSeven{\tikz{\pingu[wings wave,name=p,eyes shiny,hat,KK]; \node[scale=1.5] at(p-belly-center) {\huge7};}}
+\newsavebox\PinguMsEleven
+\savebox\PinguMsEleven{\tikz{\pingu[wings hug,name=p,eyes wink,headband,KK]; \node[scale=1.5] at(p-belly-center) {\huge11};}}
+\newsavebox\PinguMsNineteen
+\savebox\PinguMsNineteen{\tikz{\pingu[right wing raise,name=p,:devil,hand cast right=\textcolor{pingu@purple!35!white}{\faWindows},KK]; \node[scale=1.5] at (p-belly-center) {\huge19};}}
+\newsavebox\PinguMsZero
+\savebox\PinguMsZero{\tikz{\pingu[monocle left,right wing grab,right eye angry,name=p,halo=paletteA,KK]; \node[scale=1.5] at(p-belly-center) {\huge0};}}
+\newsavebox\PinguMsFour
+\savebox\PinguMsFour{\tikz{\pingu[sunglasses,small,eyes shock,wings shock,name=p,cake-hat,cake-hat top=paletteB,KK]; \node[scale=1.5] at(p-belly-center) {\huge4};}}
+
+\begin{frame}{Merge Sort an sich}
+\begin{columns}[c]
+\column{.6\linewidth}
+\footnotesize
+\begin{algorithm}[H]
+\PreCode\StartCode
+\onslide<2->{\Function{sort(\list: \List) \(\to\) \List}{
+    \onslide<4->{\lIf{\textit{len} \(\list \leq 1\)}{\KwRet{\list}}}
+\smallskip
+    \onslide<5->{\le, \ri\ \(\gets\) \textit{split}(\list)\;}
+
+    \onslide<7->{\KwRet~}\onslide<6->{\(\textit{merge}\bigl(\textit{sort}(\le),~\textit{sort}(\ri)\bigr)\)\;}
+}}
+\bigskip
+\onslide<3->{\Function{merge(\a: \List, \b: \List) \(\to\) \List}{
+    \onslide<8->{\me\ \(\gets\) empty List\;}
+    \smallskip
+    \onslide<9->{\While{\a\ \& \b\ aren't empty}{
+        \onslide<10->{\(\x \gets \a[0] \leq \b[0]\) \KwSty{?} \a\ \KwSty{:} \b\;}
+        \onslide<11->{\me.add(\x.remove(\(0\)))\;}
+    }}
+    \smallskip
+    \onslide<13->{\me.add(}\onslide<12->{\textit{\a\ not empty} \KwSty{?} \a\ \KwSty{:} \b}\onslide<13->{)\;}
+    \onslide<14->{\KwRet\me\;}
+}}
+\end{algorithm}
+\column{.375\linewidth}
+\resizebox\linewidth!{\begin{tikzpicture}
+    \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
+        \onslide<\the\numexpr15+\i\relax->{
+            \node[scale=.33,above] (\i) at (1.25*\i, 0) {\expandafter\usebox\csname PinguMs\p\endcsname};
+        }
+    }
+    \onslide<21->{
+        \draw[decoration={brace,mirror},decorate] (1.south west|-0,0) to (3.south east|-0,0);
+        \draw[decoration={brace,mirror},decorate] (4.south west|-0,0) to (5.south east|-0,0);
+    }
+    \onslide<22->{
+    \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -1.25) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+    \onslide<23->{
+        \foreach \a/\b in {1/2,3/3,4/4,5/5}{
+            \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-1.25) to (\b.south east|-0,-1.25);
+        }
+    }
+    \onslide<23->{
+    \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -2.5) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+    \onslide<24->{
+        \foreach \a/\b in {1/1,2/2,3/3,4/4,5/5}{
+            \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-2.5) to (\b.south east|-0,-2.5);
+        }
+    \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -3.75) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+    \pgfonlayer{background}
+    \onslide<25->{
+        \draw[line cap=round,line width=2mm,gray!20!white] ([xshift=-1mm]1.west) -- ([xshift=1mm]5.east);
+    }
+    \endpgfonlayer
+    \onslide<26->{
+        \foreach \a/\b in {1/2,3/3,4/5}{
+            \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-3.75) to (\b.south east|-0,-3.75);
+        }
+    \foreach[count=\i] \p in {Seven,Eleven,Nineteen,Zero,Four} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -5) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+    \onslide<26->{
+        \foreach \a/\b in {1/3,4/5}{
+            \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-5) to (\b.south east|-0,-5);
+        }
+    \foreach[count=\i] \p in {Seven,Eleven,Nineteen,Zero,Four} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -6.25) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+    \onslide<27->{
+        \foreach \a/\b in {1/5}{
+            \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-6.25) to (\b.south east|-0,-6.25);
+        }
+    \foreach[count=\i] \p in {Zero,Four,Seven,Eleven,Nineteen} {
+        \node[scale=.33,above] (\i) at (1.25*\i, -7.5) {\expandafter\usebox\csname PinguMs\p\endcsname};
+    }}
+\end{tikzpicture}}
+\end{columns}
+\begin{tikzpicture}[remember picture,overlay]
+    \onslide<15->{%
+        \node[above right=.25cm,yshift=1cm,scale=.6] (pingu) at (current page.south west) {\usebox\pinguA};
+        \node[above=1mm,scale=.6,text width=4.5cm,align=center,font=\footnotesize\sffamily] at(pingu.north) {%
+Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die Hordeeeee\ldots
+        };
+    }
+\end{tikzpicture}
+\end{frame}
+}
+
+\SidebarReset
+\subsection{In-Place}
+\begin{frame}{Begriff: In-Place}
+
+\end{frame}
+
+\section{Abschluss}
+\begin{frame}{Abschließendes}
+\begin{itemize}[<+(1)->]
+    \itemsep12pt
+    \item
+\end{itemize}
+\end{frame}
+\end{document}
