@@ -148,7 +148,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \subsection{Nichts ist umsonst}
 \savebox\pinguA{\tikz{\pingu[wings wave,wings grab,name=p,eyes wink,hair=paletteB]; \shade[ball color=paletteA] (p-belly-center) circle [radius=4mm];}}%
 
-\begin{frame}{Nichts ist umnsonst}
+\begin{frame}{Nichts ist umsonst}
 \begin{itemize}
     \item<2-> Die Laufzeit verbessern wir durch: \begin{itemize}
         \itemsep12pt
@@ -210,7 +210,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Nichts ist umnsonst\hfill\textbf{\color{shadeA}II}}
+\begin{frame}{Nichts ist umsonst\hfill\textbf{\color{shadeA}II}}
 \begin{itemize}
     \item<1-> Die Laufzeit verbessern wir durch: \begin{itemize}
         \itemsep12pt
@@ -270,7 +270,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Nichts ist umnsonst\hfill\textbf{\color{shadeA}III}}
+\begin{frame}{Nichts ist umsonst\hfill\textbf{\color{shadeA}III}}
 \begin{itemize}
     \itemsep12pt
     \item<1-> Die Laufzeit verbessern wir durch: \begin{itemize}
@@ -408,23 +408,24 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \SidebarFile{./IterativeSplit.java}{IterativeSplit.java}
 \begin{frame}[fragile]{Iteratives Merge}
 \begin{columns}
-\column{.75\linewidth}
+\column{.705\linewidth}
 \lstfs{8}
 \begin{plainjava}
 !*\onslide<2->*!void sort(int[] arr, int n) {
-!*\onslide<3->*!    for (int len = 1; len <= n; len = 2*len) {
-!*\onslide<4->*!        for (int left = 0; left < n; left += 2*len) {
-!*\onslide<5->*!            int mid = Math.min(left + len - 1, n);
-!*\onslide<6->*!            int right = Math.min(left + 2*len - 1, n);
-!*\onslide<7->*!            merge(arr, left, mid, right);
-!*\onslide<4->*!        }
-!*\onslide<3->*!    }
+!*\onslide<3->*!   for (int len = 1; len <= n; len = 2*len) {
+!*\onslide<4->*!      for (int left = 0; left < n; left += 2*len) {
+!*\onslide<5->*!         int mid = Math.min(left + len - 1, n);
+!*\onslide<6->*!         int right = Math.min(left + 2*len - 1, n);
+!*\onslide<7->*!         merge(arr, left, mid, right);
+!*\onslide<4->*!      }
+!*\onslide<3->*!   }
 !*\onslide<2->*!}
 \end{plainjava}
-\column{.165\linewidth}
+\column{.2\linewidth}
 \scriptsize\begin{enumerate}
-    \item<9-> Beim Merge steigt Listenlänge nach \(2^i\).
-    \item<10-> Einstieg bei einelementigen Listen möglich.
+    \itemsep12pt
+    \item<9-> Beim Merge steigt die Lis\-ten\-länge getreu \(2^i\).
+    \item<10-> Einstieg ist direkt bei einelementigen Listen möglich.
 \end{enumerate}
 \end{columns}
 \begin{tikzpicture}[overlay,remember picture]
@@ -435,6 +436,21 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{tikzpicture}%
 \end{frame}
 \SidebarReset
+
+\begin{frame}[fragile]{Iteratives Merge\hfill\textbf{\color{shadeA}II}}
+\lstfs{8}
+\begin{plainjava}
+!*\onslide<2->*!void sort(int[] arr, int n) {
+!*\onslide<3->*!   for (int len = 1; len <= n; len = 2*len) {
+!*\onslide<4->*!      for (int left = 0; left < n; left += 2*len) {
+!*\onslide<5->*!         int mid = Math.min(left + len - 1, n);
+!*\onslide<6->*!         int right = Math.min(left + 2*len - 1, n);
+!*\onslide<7->*!         merge(arr, left, mid, right);
+!*\onslide<4->*!      }
+!*\onslide<3->*!   }
+!*\onslide<2->*!}
+\end{plainjava}
+\end{frame}
 
 
 % somewhat cap O(n (log n)^2)
