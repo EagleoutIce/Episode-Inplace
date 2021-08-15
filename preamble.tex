@@ -1,4 +1,7 @@
 \errorcontextlines 999999
+\usepackage{attachfile2}
+
+
 \usepackage[ngerman]{babel}
 \PassOptionsToPackage{vlined,linesnumberedhidden}{algorithm2e}
 \usepackage[%
@@ -17,7 +20,7 @@
 \makeatletter
 \sol@list@define@styles{%
   {keywordA: \@declaredcolor{sol@colors@lst@keywordA}\bfseries},%
-  {keywordC: \@declaredcolor{sol@colors@lst@keywordB}\bfseries},%
+  {keywordC: \@declaredcolor{sol@colors@lst@keywordC}\bfseries},%
 }
 \makeatother
 
@@ -30,7 +33,15 @@
 \SetKwIF{If}{ElseIf}{Else}{if}{:}{elif:}{else:}{}
 \SetKwFor{While}{while}{:}{}
 \lstset{lineskip=5.5pt}
+\AtBeginDocument{\def\O{\mathcal{O}}}
 \lstfs{10}
+
+\makeatletter
+\def\SidebarFile#1#2{%
+    \appto\btdl@sidebar@content{%
+        {\fontsize{6}{6}\faFileCodeO\qquad\scalebox{1.25}{\textattachfile{#1}{#2}}}\par
+    }%
+}
 
 \DefinePalette{InplaceMerge}
 {Blau,bläulich: RGB(0, 114, 187)}
@@ -39,6 +50,11 @@
 {Gelb,gelblich: RGB(255, 200, 87)}
 \SetShadeContrast{45}
 \UsePalette{InplaceMerge}
+
+\attachfilesetup{%
+    author={Florian Sihler},%
+    color=darkgray, icon=Tag, mimetype=text/plain%
+}
 
 \usetheme[libs,nofootfade,centerfoot]{dividing-lines}
 \SetColorProfile*{paletteA}{paletteB}{paletteC}
