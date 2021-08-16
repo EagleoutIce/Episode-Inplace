@@ -357,7 +357,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 }
 \end{tikzpicture}}
 \par}
-\vspace*{3em}\par\onslide<12->{%
+\vspace*{3em}\par\onslide<11->{%
 \resizebox\linewidth!{\begin{tikzpicture}
 \foreach[count=\i]\k in {1, 3, 7, 9, 5, \ldots} {
     \node[lblock,minimum width=6mm] (\i) at (1.25*\i,0) {\k};
@@ -369,7 +369,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \node[below,gray] at(3.south) {m};
     \node[below,gray] at(5.south) {r};
     \draw[-Kite,gray] ([yshift=1mm]2.north) -- ([yshift=1mm]4.north);
-    \draw[-Kite,gray,rounded corners=.25mm] ([yshift=-1mm]l2.south) -- ++(0,-2.5mm) -| ([yshift=-1mm]l.south);
+    \onslide<12->{\draw[-Kite,gray,rounded corners=.25mm] ([yshift=-1mm]l2.south) -- ++(0,-2.5mm) -| ([yshift=-1mm]l.south);}
 }
 \end{tikzpicture}}
 \par}
@@ -390,7 +390,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \vspace*{.25em}\par
 \end{columns}
 \begin{tikzpicture}[overlay,remember picture]
-    \onslide<9->{%
+    \onslide<14->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
         \node[left=-3mm,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Jetzt hat sich die Zeitkomplexität verschlechtert. Von \(\O(n \log n)\) auf \(\O(n^2)\).};
     }
@@ -408,7 +408,8 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \column{.705\linewidth}
 \lstfs{8}
 \begin{plainjava}
-!*\onslide<2->*!void sort(int[] arr, int n) {
+!*\onslide<2->*!void sort(int[] arr) {
+!*\onslide<2->*!   final int n = arr.length - 1;
 !*\onslide<3->*!   for (int len = 1; len <= n; len = 2*len) {
 !*\onslide<4->*!      for (int left = 0; left < n; left += 2*len) {
 !*\onslide<5->*!         int mid = Math.min(left + len - 1, n);
@@ -438,7 +439,8 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \lstfs{8}%
 \begin{minipage}{8.125cm}
 \begin{plainjava}^^J
-void sort(int[] arr, int n) \{^^J
+void sort(int[] arr) \{^^J
+{} {} {} final int n = arr.length - 1;
 {} {} {} for (int len = 1; len <= n; len = 2*len) \{^^J
 {} {} {} {} {} {} for (int left = 0; left < n; left += 2*len) \{^^J
 {} {} {} {} {} {} {} {} {} int mid = Math.min(left + len - 1, n);^^J

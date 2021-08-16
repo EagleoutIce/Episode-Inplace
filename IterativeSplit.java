@@ -23,7 +23,8 @@ class IterativeSplit {
     }
   }
 
-	static void sort(int[] arr, int n) {
+	static void sort(int[] arr) {
+    final int n = arr.length - 1;
 		for (int len = 1; len <= n; len = 2*len) {
 			for (int left = 0; left < n; left += 2*len) {
 				int mid = Math.min(left + len - 1, n);
@@ -35,7 +36,7 @@ class IterativeSplit {
 
   public static void main(String[] args) {
     int[] test = {12, 7, 9, -3, 15, 26, 39, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 19, 18, 19, 20, 30, 33, -20, 8};
-    sort(test, test.length - 1);
+    sort(test);
     System.out.println(Arrays.toString(test));
   }
 }
