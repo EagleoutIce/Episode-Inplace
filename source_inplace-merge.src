@@ -515,8 +515,8 @@ void sort(int[] arr, int n) \{^^J
 \end{tikzpicture}
 \end{frame}
 
-\subsection{Ein Zwischenstand}
-\begin{frame}[c]{Ein Zwischenstand}
+\subsection{Festzuhalten ist}
+\begin{frame}[c]{Es bleibt festzuhalten\ldots}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
     \item Der zusätzliche Speicher ist nun gänzlich in \(\O(1)\).
