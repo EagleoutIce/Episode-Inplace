@@ -68,21 +68,17 @@
     \onslide<21->{
         \draw[decoration={brace,mirror},decorate] (1.south west|-0,0) to (3.south east|-0,0);
         \draw[decoration={brace,mirror},decorate] (4.south west|-0,0) to (5.south east|-0,0);
-    }
-    \onslide<22->{
     \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
         \node[scale=.33,above] (\i) at (1.25*\i, -1.25) {\expandafter\usebox\csname PinguMs\p\endcsname};
     }}
-    \onslide<23->{
+    \onslide<22->{
         \foreach \a/\b in {1/2,3/3,4/4,5/5}{
             \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-1.25) to (\b.south east|-0,-1.25);
         }
-    }
-    \onslide<23->{
     \foreach[count=\i] \p in {Eleven,Seven,Nineteen,Four,Zero} {
         \node[scale=.33,above] (\i) at (1.25*\i, -2.5) {\expandafter\usebox\csname PinguMs\p\endcsname};
     }}
-    \onslide<24->{
+    \onslide<23->{
         \foreach \a/\b in {1/1,2/2,3/3,4/4,5/5}{
             \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-2.5) to (\b.south east|-0,-2.5);
         }
@@ -90,11 +86,11 @@
         \node[scale=.33,above] (\i) at (1.25*\i, -3.75) {\expandafter\usebox\csname PinguMs\p\endcsname};
     }}
     \pgfonlayer{background}
-    \onslide<25->{
+    \onslide<24->{
         \draw[line cap=round,line width=2mm,gray!20!white] ([xshift=-1mm]1.west) -- ([xshift=1mm]5.east);
     }
     \endpgfonlayer
-    \onslide<26->{
+    \onslide<25->{
         \foreach \a/\b in {1/2,3/3,4/5}{
             \draw[decoration={brace,mirror},decorate] (\a.south west|-0,-3.75) to (\b.south east|-0,-3.75);
         }
