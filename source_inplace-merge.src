@@ -530,6 +530,7 @@ void sort(int[] arr) \{^^J
 \SidebarCite{dive:merge-sorted-arrays}
 \SidebarCite{book:algorithms}
 \SidebarCite{dive:parallel-merge}
+\SidebarCite{dive:natural-mergesort}
 \begin{frame}{Abschließendes}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
