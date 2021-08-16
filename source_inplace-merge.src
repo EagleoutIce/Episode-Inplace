@@ -420,7 +420,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 !*\onslide<2->*!}
 \end{plainjava}
 \column{.2\linewidth}
-\scriptsize\begin{enumerate}
+\scriptsize\vspace*{-2mm}\begin{enumerate}
     \itemsep12pt
     \item<9-> Beim Merge steigt die Lis\-ten\-länge getreu \(2^i\).
     \item<10-> Einstieg ist direkt bei einelementigen Listen möglich.
@@ -440,7 +440,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{minipage}{8.125cm}
 \begin{plainjava}^^J
 void sort(int[] arr) \{^^J
-{} {} {} final int n = arr.length - 1;
+{} {} {} final int n = arr.length - 1;^^J
 {} {} {} for (int len = 1; len <= n; len = 2*len) \{^^J
 {} {} {} {} {} {} for (int left = 0; left < n; left += 2*len) \{^^J
 {} {} {} {} {} {} {} {} {} int mid = Math.min(left + len - 1, n);^^J
@@ -535,6 +535,7 @@ void sort(int[] arr) \{^^J
     \itemsep12pt
     \item Wir werden es (vermutlich) nicht unter \(\O(n \log^2(n))\) schaffen.
     \item Das erreichen wir durch eine effiziente Shell-Sort-Inspiration, welcher den Merge ersetzen soll.
+    \item Es gibt viele weitere Derivate, wie den Natural Mergesort\ldots
 \end{itemize}
 \end{frame}
 \SidebarReset
