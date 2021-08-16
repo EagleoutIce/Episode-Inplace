@@ -131,7 +131,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \itemsep12pt
     \item Bedeutung variiert: \begin{itemize}
         \itemsep6pt
-        \item Konstanter zusätzlicher Speicher (\(\O(1)\)).\par
+        \item Konstanter zusätzlicher Speicher: \(\O(1)\).\par
               \pause Eventuell auch durch Compiler-Optimierungen.
         \item Konstante zusätzliche Zeiger-/Indexzugriffe.
         \item Konstanter Speicher für die Eingabemanipulation.
@@ -294,14 +294,14 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 !*\onslide<4->*!    if(arr[m] <= arr[l2]) return;
 !*\onslide<5->*!    while(l <= m && l2 <= r) {
 !*\onslide<6->*!        if(arr[l] <= arr[l2]) { l++; }
-!*\onslide<6->*!        else { // shift elements from l, 1 to right
-!*\onslide<7->*!            int shift = arr[l2], idx = l2;
-!*\onslide<8->*!            while(l < idx) {
-!*\onslide<9->*!                arr[idx] = arr[idx - 1]; idx--;
-!*\onslide<8->*!            }
-!*\onslide<10->*!            arr[l] = shift;
-!*\onslide<11->*!            l++; m++; l2++;
-!*\onslide<6->*!}   !*\onslide<5->*!}   !*\onslide<2->*!}
+!*\onslide<7->*!        else { !*\onslide<8->*!// shift elements from l, 1 to right
+!*\onslide<9->*!            int shift = arr[l2], idx = l2;
+!*\onslide<10->*!            while(l < idx) {
+!*\onslide<11->*!                arr[idx] = arr[idx - 1]; idx--;
+!*\onslide<10->*!            }
+!*\onslide<12->*!            arr[l] = shift;
+!*\onslide<13->*!            l++; m++; l2++;
+!*\onslide<7->*!}   !*\onslide<5->*!}   !*\onslide<2->*!}
 \end{plainjava}
 \column{.3\linewidth}
 \centering
@@ -357,7 +357,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 }
 \end{tikzpicture}}
 \par}
-\vspace*{3em}\par\onslide<9->{%
+\vspace*{3em}\par\onslide<12->{%
 \resizebox\linewidth!{\begin{tikzpicture}
 \foreach[count=\i]\k in {1, 3, 7, 9, 5, \ldots} {
     \node[lblock,minimum width=6mm] (\i) at (1.25*\i,0) {\k};
@@ -374,7 +374,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{tikzpicture}}
 \par}
 \vspace*{1.5em}\par
-\onslide<10->{%
+\onslide<13->{%
 \resizebox\linewidth!{\begin{tikzpicture}
 \foreach[count=\i]\k in {1, 3, 7, 9, 5, \ldots} {
     \node[lblock,minimum width=6mm] (\i) at (1.25*\i,0) {\k};
