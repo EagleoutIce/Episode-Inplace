@@ -284,7 +284,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{itemize}
 \end{frame}
 
-\section{Improve Merge}
+\section{Besseres Merge}
 \savebox\pinguA{\tikz{\pingu[wings hug,left eye shiny,headband,eye patch right,large];}}%
 % \subsection{Pointer Compare}
 \SidebarFile{./InplaceMerge.java}{InplaceMerge.java}
@@ -402,8 +402,9 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{frame}
 \SidebarReset
 
-\section{Improve Split}
+\section{Besseres Split}
 
+\subsection{Die Verbesserung an sich}
 \savebox\pinguA{\tikz{\pingu[wings shock,tie,eyes shock,headband,large];}}%
 \SidebarFile{./IterativeSplit.java}{IterativeSplit.java}
 \begin{frame}[fragile]{Iteratives Split}
@@ -514,14 +515,29 @@ void sort(int[] arr, int n) \{^^J
 \end{tikzpicture}
 \end{frame}
 
-
-% somewhat cap O(n (log n)^2)
-
+\subsection{Ein Zwischenstand}
+\begin{frame}[c]{Ein Zwischenstand}
+\begin{itemize}[<+(1)->]
+    \itemsep12pt
+    \item Der zusätzliche Speicher ist nun gänzlich in \(\O(1)\).
+    \item Aber die Laufzeit ist nun in \(\O(n^2)\).\smallskip\par
+    \begin{itemize}
+        \itemsep6pt
+        \item Dazu trägt der iterative Sort nur \(\O(n \log n)\) bei.
+        \item Die Komplexität entspringt dem Merge\ldots
+    \end{itemize}
+\end{itemize}
+\end{frame}
 \section{Abschluss}
+\SidebarCite{dive:merge-sorted-arrays}
+\SidebarCite{book:algorithms}
+\SidebarCite{dive:parallel-merge}
 \begin{frame}{Abschließendes}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item
+    \item Wir werden es (vermutlich) nicht unter \(\O(n \log^2(n))\) schaffen.
+    \item Das erreichen wir durch eine effiziente Shell-Sort-Inspiration, welcher den Merge ersetzen soll.
 \end{itemize}
 \end{frame}
+\SidebarReset
 \end{document}
