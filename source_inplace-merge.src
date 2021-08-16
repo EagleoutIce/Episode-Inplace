@@ -517,6 +517,29 @@ void sort(int[] arr) \{^^J
 \end{tikzpicture}
 \end{frame}
 
+%     \item Ist die länge keine Zweierpotenz sichert uns \bjava{Math::min}.
+\begin{frame}[c]{Iteratives Split\hfill\textbf{\color{shadeA}III}}
+\begin{itemize}
+    \item<2-> Ist die länge keine Zweierpotenz sichert uns \bjava{Math::min}.
+\end{itemize}
+\onslide<3->{\scalebox{.875}{\begin{tikzpicture}
+\foreach[count=\i] \a in {6, 3, 9, 7, 5, 4, 1} {
+    \node[lblock, minimum width=6mm] (\a) at (\i, 0) {\a};
+}
+\onslide<4->{\foreach[count=\i] \a/\b/\c/\k in {6/3/A/{0 0 1}, 9/7/B/{2 2 3}, 5/4/C/{4 4 5}, 1/1/D/{6 6 7}}{%
+    \draw[shade\c,line width=.33mm] ([yshift=1mm]\a.north west) to[edge node={node[above,gray] {\i} }] ([yshift=1mm]\a.north east);
+    \draw[shade\c,line width=.33mm] ([yshift=1mm]\b.north west) to[edge node={node[above,gray!65!white,scale=.75] {\only<6->{\k}} }] ([yshift=1mm]\b.north east);
+}}
+\pgfonlayer{background}
+\onslide<3->{\draw[line cap=butt,gray!39!white,line width=1mm] (6.east) -- (1.west);}
+\endpgfonlayer
+\node[right,gray,scale=.9] (len) at(0.east) {\T{len} = 1};
+\end{tikzpicture}}}
+\begin{tikzpicture}[overlay,remember picture]
+    \node[above right=.25cm,yshift=.5cm,scale=.66,rounded corners=2pt,fill=gray!8!white] (cd) at (current page.south west) {\usebox\pinguA};
+\end{tikzpicture}
+\end{frame}
+
 \subsection{Festzuhalten ist}
 \begin{frame}[c]{Es bleibt festzuhalten\ldots}
 \begin{itemize}[<+(1)->]
