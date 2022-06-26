@@ -132,12 +132,12 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \item Bedeutung variiert: \begin{itemize}
         \itemsep6pt
         \item Konstanter zusätzlicher Speicher: \(\O(1)\).\par
-              \pause Eventuell auch durch Compiler-Optimierungen.
-        \item Konstante zusätzliche Zeiger-/Indexzugriffe.
-        \item Konstanter Speicher für die Eingabemanipulation.
+              \pause Eventuell auch durch Compiler-Optimierungen
+        \item Konstante zusätzliche Zeiger-/Indexzugriffe
+        \item Konstanter Speicher für die Eingabemanipulation
         \item \ldots
     \end{itemize}
-    \item Wenn nicht In-Place: \say{Out-Of-Place}.
+    \item Wenn nicht In-Place: \say{Out-Of-Place}
 \end{itemize}
 \end{frame}
 
@@ -148,7 +148,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{itemize}
     \item<2-> Die Laufzeit verbessern wir durch: \begin{itemize}
         \itemsep12pt
-        \item<3-> Entfernen redundanter Operationen.\smallskip\par
+        \item<3-> Entfernen redundanter Operationen\smallskip\par
 \begin{center}
 \onslide<4->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
     \scope
@@ -172,7 +172,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \endscope}
 \end{tikzpicture}}}
 \end{center}
-        \item<7-> Ausnutzen der Einschränkungen (z.B. nur Zahlen).\smallskip\par
+        \item<7-> Ausnutzen der Einschränkungen (z.B. nur Zahlen)\smallskip\par
 \begin{center}
 \onslide<8->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
     \scope
@@ -210,7 +210,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{itemize}
     \item<1-> Die Laufzeit verbessern wir durch: \begin{itemize}
         \itemsep12pt
-        \item<2-> Geschicktes abstrahieren (z.B. Reduktion).\smallskip\par
+        \item<2-> Geschicktes abstrahieren (z.B. Reduktion)\smallskip\par
 \begin{center}
 \onslide<3->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
     \scope
@@ -261,7 +261,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \endscope}
 \end{tikzpicture}}}
 \end{center}
-        \item<6-> Zusätzlichen Speicher (z.B. als Cache).
+        \item<6-> Zusätzlichen Speicher (z.B. als Cache)
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -269,14 +269,14 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{frame}{Nichts ist umsonst\hfill\textbf{\color{shadeA}III}}
 \begin{itemize}
     \itemsep12pt
-    \item<1-> Die Laufzeit verbessern wir durch: \begin{itemize}
+    \item<1-> Die Laufzeit verbessern wir durch:\smallskip \begin{itemize}
         \itemsep6pt
-        \item<2-> \only<3->{\color{gray}}Entfernen redundanter Operationen.
-        \item<2-> \only<3->{\color{gray}}Ausnutzen der Einschränkungen.
-        \item<2-> \only<3->{\color{gray}}Geschicktes abstrahieren.
-        \item<2-> \color{black}Zusätzlichen Speicher.
+        \item<2-> \only<3->{\color{gray}}Entfernen redundanter Operationen
+        \item<2-> \only<3->{\color{gray}}Ausnutzen der Einschränkungen
+        \item<2-> \only<3->{\color{gray}}Geschicktes abstrahieren
+        \item<2-> \color{black}Zusätzlichen Speicher
     \end{itemize}
-    \item<4-> Gängigster Kompromiss: Speicher vs. Laufzeit.
+    \item<4-> Gängigster Kompromiss: Speicher vs. Laufzeit
 \end{itemize}
 \end{frame}
 
@@ -591,11 +591,11 @@ void sort(int[] arr) \{^^J
 \begin{frame}[c]{Es bleibt festzuhalten\ldots}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item Der zusätzliche Speicher ist nun gänzlich in \(\O(1)\).
-    \item Aber die Laufzeit ist nun in \(\O(n^2)\).\smallskip\par
+    \item Der zusätzliche Speicher ist nun gänzlich in \(\O(1)\)
+    \item Aber die Laufzeit ist nun in \(\O(n^2)\)\smallskip\par
     \begin{itemize}
         \itemsep6pt
-        \item Dazu trägt der iterative Sort \say{nur} \(\O(n \log n)\) bei.
+        \item Dazu trägt der iterative Sort \say{nur} \(\O(n \log n)\) bei
         \item Die Komplexität entspringt dem Merge\ldots
     \end{itemize}
 \end{itemize}
@@ -608,9 +608,9 @@ void sort(int[] arr) \{^^J
 \begin{frame}{Abschließendes}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item (Vermutlich) geht nicht unter \(\O(n \log^2(n))\).
-    \item Dies erreicht man durch eine Shell-Sort-Inspiration.
-    \item Es gibt viele weitere Derivate, wie den Natural Mergesort\ldots
+    \item (Vermutlich) geht nicht unter \(\O(n \log^2(n))\)
+    \item Dies erreicht man durch eine Shell-Sort-Inspiration
+    \item Es gibt viele weitere Derivate, wie den \say{Natural Mergesort}\ldots
 \end{itemize}
 \end{frame}
 \SidebarReset
