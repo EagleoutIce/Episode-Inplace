@@ -212,28 +212,28 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
         \itemsep12pt
         \item<2-> Geschicktes abstrahieren (z.B. Reduktion)\smallskip\par
 \begin{center}
-\onslide<3->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
+\onslide<3->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6exm/.style={draw,gray!39!white,line width=1mm,rounded corners=2pt}]
     \scope
     \clip[rounded corners=1pt] (0,0) rectangle ++(6,3);
     \draw (0,0) grid ++(6,3);
     \fill[shadeB] (5.5,2.5) circle[radius=2mm];
     \onslide<4->{% don't looksies at this :C
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,.5) rectangle ++(5,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,1.5) -- ++(5,0);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (1.5,.5) -- ++(0,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (2.5,.5) -- ++(0,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (3.5,.5) -- ++(0,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (4.5,.5) -- ++(0,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,.5) -- ++(2,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (1.5,.5) -- ++(2,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (2.5,.5) -- ++(2,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (3.5,.5) -- ++(2,2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,2.5) -- ++(2,-2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (1.5,2.5) -- ++(2,-2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (2.5,2.5) -- ++(2,-2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (3.5,2.5) -- ++(2,-2);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (4.5,2.5) -- ++(1,-1) -- ++(-1,-1);
-        \draw[gray!39!white,line width=1mm,rounded corners=2pt] (1.5,2.5) -- ++(-1,-1) -- ++(1,-1);
+        \path[m] (.5,.5) rectangle ++(5,2);
+        \path[m] (.5,1.5) -- ++(5,0);
+        \path[m] (1.5,.5) -- ++(0,2);
+        \path[m] (2.5,.5) -- ++(0,2);
+        \path[m] (3.5,.5) -- ++(0,2);
+        \path[m] (4.5,.5) -- ++(0,2);
+        \path[m] (.5,.5) -- ++(2,2);
+        \path[m] (1.5,.5) -- ++(2,2);
+        \path[m] (2.5,.5) -- ++(2,2);
+        \path[m] (3.5,.5) -- ++(2,2);
+        \path[m] (.5,2.5) -- ++(2,-2);
+        \path[m] (1.5,2.5) -- ++(2,-2);
+        \path[m] (2.5,2.5) -- ++(2,-2);
+        \path[m] (3.5,2.5) -- ++(2,-2);
+        \path[m] (4.5,2.5) -- ++(1,-1) -- ++(-1,-1);
+        \path[m] (1.5,2.5) -- ++(-1,-1) -- ++(1,-1);
     }
     \node[scale=.3] at(.5, .5) {\usebox\pinguA};
     \endscope
@@ -243,12 +243,12 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \scope
     \clip[rounded corners=1pt] (0,0) rectangle ++(6,3);
     % \draw (0,0) grid ++(6,3);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,.5) rectangle ++(5,2);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (.5,1.5) -- ++(5,0);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (1.5,.5) -- ++(0,2);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (2.5,.5) -- ++(0,2);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (3.5,.5) -- ++(0,2);
-    \draw[gray!39!white,line width=1mm,rounded corners=2pt] (4.5,.5) -- ++(0,2);
+    \path[m] (.5,.5) rectangle ++(5,2);
+    \path[m] (.5,1.5) -- ++(5,0);
+    \path[m] (1.5,.5) -- ++(0,2);
+    \path[m] (2.5,.5) -- ++(0,2);
+    \path[m] (3.5,.5) -- ++(0,2);
+    \path[m] (4.5,.5) -- ++(0,2);
     \foreach \x in {0,1,2,3,4,5} {
         \foreach \y in {0,1,2} {
             \fill[gray!39!white] (\x+.5,\y+.5) circle [radius=1.25mm];
