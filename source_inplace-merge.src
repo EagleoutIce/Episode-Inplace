@@ -1,7 +1,7 @@
 \input{preamble}
 
 \begin{document}
-\section{Klassiker}
+\section{Classics}
 \subsection{Merge Sort}
 \SidebarCite{gh:tikzpingus}
 
@@ -32,7 +32,7 @@
 \newsavebox\PinguMsFour
 \savebox\PinguMsFour{\tikz{\pingu[sunglasses,small,eyes shock,wings shock,name=p,cake-hat,cake-hat top=paletteB,KK]; \node[scale=1.5] at(p-belly-center) {\huge4};}}
 
-\begin{frame}{Merge Sort an sich}
+\begin{frame}{Merge Sort itself}
 \begin{columns}[c]
 \column{.6\linewidth}
 \footnotesize
@@ -117,7 +117,7 @@
     \onslide<15->{%
         \node[above right=.25cm,yshift=1cm,scale=.6] (pingu) at (current page.south west) {\usebox\pinguA};
         \node[above=1mm,scale=.6,text width=4.5cm,align=center,font=\footnotesize\sffamily] at(pingu.north) {%
-Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die Hordeeeee\ldots
+We will only look at the \textit{ascending} case. An example for the hordeeeee\ldots
         };
     }
 \end{tikzpicture}
@@ -129,26 +129,26 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{frame}{In-Place}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item Bedeutung variiert: \begin{itemize}
+    \item The meaning varies: \begin{itemize}
         \itemsep6pt
-        \item Konstanter zusätzlicher Speicher: \(\O(1)\).\par
-              \pause Eventuell auch durch Compiler-Optimierungen
-        \item Konstante zusätzliche Zeiger-/Indexzugriffe
-        \item Konstanter Speicher für die Eingabemanipulation
+        \item Constant additional memory: \(\O(1)\).\par
+              \pause possibly also thanks to compiler optimizations
+        \item Constant additional pointer/index accesses
+        \item Constant memory to manipulate the input
         \item \ldots
     \end{itemize}
-    \item Wenn nicht In-Place: \say{Out-Of-Place}
+    \item If not in-place: \say{out-of-place}
 \end{itemize}
 \end{frame}
 
-\subsection{Nichts ist umsonst}
+\subsection{Nothing is free}
 \savebox\pinguA{\tikz{\pingu[wings wave,wings grab,name=p,eyes wink,hair=paletteB]; \shade[ball color=paletteA] (p-belly-center) circle [radius=4mm];}}%
 
-\begin{frame}{Nichts ist umsonst}
+\begin{frame}{Nothing is free}
 \begin{itemize}
-    \item<2-> Die Laufzeit verbessern wir durch: \begin{itemize}
+    \item<2-> We improve the runtime by: \begin{itemize}
         \itemsep12pt
-        \item<3-> Entfernen redundanter Operationen\smallskip\par
+        \item<3-> removing redundant operations\smallskip\par
 \begin{center}
 \onslide<4->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
     \scope
@@ -172,7 +172,7 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \endscope}
 \end{tikzpicture}}}
 \end{center}
-        \item<7-> Ausnutzen der Einschränkungen (z.B. nur Zahlen)\smallskip\par
+        \item<7-> exploiting the constraints (e.g. numbers only)\smallskip\par
 \begin{center}
 \onslide<8->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex]
     \scope
@@ -206,13 +206,13 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Nichts ist umsonst\hfill\textbf{\color{shadeA}II}}
+\begin{frame}{Nothing is free\hfill\textbf{\color{shadeA}II}}
 \begin{itemize}
-    \item<1-> Die Laufzeit verbessern wir durch: \begin{itemize}
+    \item<1-> We improve the runtime by: \begin{itemize}
         \itemsep12pt
-        \item<2-> Geschicktes abstrahieren (z.B. Reduktion)\smallskip\par
+        \item<2-> abstracting cleverly (e.g. reduction)\smallskip\par
 \begin{center}
-\onslide<3->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6exm/.style={draw,gray!39!white,line width=1mm,rounded corners=2pt}]
+\onslide<3->{\scalebox{.6}{\begin{tikzpicture}[baseline=.6ex,m/.style={draw,gray!39!white,line width=1mm,rounded corners=2pt}]
     \scope
     \clip[rounded corners=1pt] (0,0) rectangle ++(6,3);
     \draw (0,0) grid ++(6,3);
@@ -261,30 +261,30 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
     \endscope}
 \end{tikzpicture}}}
 \end{center}
-        \item<6-> Zusätzlichen Speicher (z.B. als Cache)
+        \item<6-> additional memory (e.g. as a cache)
     \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Nichts ist umsonst\hfill\textbf{\color{shadeA}III}}
+\begin{frame}{Nothing is free\hfill\textbf{\color{shadeA}III}}
 \begin{itemize}
     \itemsep12pt
-    \item<1-> Die Laufzeit verbessern wir durch:\smallskip \begin{itemize}
+    \item<1-> We improve the runtime by:\smallskip \begin{itemize}
         \itemsep6pt
-        \item<2-> \only<3->{\color{gray}}Entfernen redundanter Operationen
-        \item<2-> \only<3->{\color{gray}}Ausnutzen der Einschränkungen
-        \item<2-> \only<3->{\color{gray}}Geschicktes abstrahieren
-        \item<2-> \color{black}Zusätzlichen Speicher
+        \item<2-> \only<3->{\color{gray}}removing redundant operations
+        \item<2-> \only<3->{\color{gray}}exploiting the constraints
+        \item<2-> \only<3->{\color{gray}}abstracting cleverly
+        \item<2-> \color{black}additional memory
     \end{itemize}
-    \item<4-> Gängigster Kompromiss: Speicher vs. Laufzeit
+    \item<4-> Most common compromise: memory vs.\ runtime
 \end{itemize}
 \end{frame}
 
-\section{Besseres Merge}
+\section{A Better Merge}
 \savebox\pinguA{\tikz{\pingu[wings hug,left eye shiny,headband,eye patch right,large];}}%
 % \subsection{Pointer Compare}
 \SidebarFile{./InplaceMerge.java}{InplaceMerge.java}
-\begin{frame}[fragile]{Zeiger-Vergleich}
+\begin{frame}[fragile]{Pointer Comparison}
 \begin{columns}[c]
 \column{.633\linewidth}
 \lstfs{7}%
@@ -392,18 +392,18 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<14->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
-        \node[left=-3mm,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Jetzt hat sich die Zeitkomplexität verschlechtert. Von \(\O(n \log n)\) auf \(\O(n^2)\).};
+        \node[left=-3mm,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Now the time complexity has gotten worse. From \(\O(n \log n)\) to \(\O(n^2)\).};
     }
 \end{tikzpicture}%
 \end{frame}
 \SidebarReset
 
-\section{Besseres Split}
+\section{A Better Split}
 
-\subsection{Die Verbesserung an sich}
+\subsection{The improvement itself}
 \savebox\pinguA{\tikz{\pingu[wings shock,tie,eyes shock,headband,large];}}%
 \SidebarFile{./IterativeSplit.java}{IterativeSplit.java}
-\begin{frame}[fragile]{Iteratives Split}
+\begin{frame}[fragile]{Iterative Split}
 \begin{columns}
 \column{.705\linewidth}
 \lstfs{8}
@@ -422,14 +422,14 @@ Wir werden nur den \textit{aufsteigenden} Fall betrachten. Ein Beispiel für die
 \column{.2\linewidth}
 \scriptsize\vspace*{-2mm}\begin{enumerate}
     \itemsep12pt
-    \item<9-> Beim Merge steigt die Lis\-ten\-länge getreu \(2^i\).
-    \item<10-> Einstieg ist direkt bei einelementigen Listen möglich.
+    \item<9-> Each merge grows the list length faithfully by \(2^i\).
+    \item<10-> We can start directly with single-element lists.
 \end{enumerate}
 \end{columns}
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<8->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
-        \node[left=-3mm,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Und was passiert hier? Eine wilde Lüge\ldots};
+        \node[left=-3mm,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {And what happens here? A wild lie\ldots};
     }
 \end{tikzpicture}%
 \end{frame}
@@ -453,7 +453,7 @@ void sort(int[] arr) \{^^J
 
 \savebox\pinguB{\tikz{\pingu[right eye wink,sign post left={\textbf{\(\text{len}\mathbf{{}\leq n}\)\thinspace?}},left wing wave,right wing shock,bow tie=paletteB, sunglasses]}}%
 
-\begin{frame}[c]{Iteratives Split\hfill\textbf{\color{shadeA}II}}
+\begin{frame}[c]{Iterative Split\hfill\textbf{\color{shadeA}II}}
 \hspace*{8.5em}\onslide<3->{\scalebox{.875}{\begin{tikzpicture}
 \foreach[count=\i] \a in {5, 6, 9, 7, 1, 3, 4, 0} {
     \node[lblock, minimum width=6mm] (\a) at (\i, 0) {\a};
@@ -510,14 +510,14 @@ void sort(int[] arr) \{^^J
 \end{tikzpicture}}}
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<2->{\node[above right=.25cm,yshift=.5cm,scale=.66,rounded corners=2pt,fill=gray!8!white] (cd) at (current page.south west) {\usebox\pinguA};}
-    \onslide<5->{\node[above=.25cm,scale=.66,text width=\wd\pinguA,align=center] (dit) at (cd.north) {Die drei kleinen, hellgrauen Zahlen markieren die Indizes von \T{left}, \T{mid} und \T{right}.};}
+    \onslide<5->{\node[above=.25cm,scale=.66,text width=\wd\pinguA,align=center] (dit) at (cd.north) {The three small, light gray numbers mark the indices of \T{left}, \T{mid} and \T{right}.};}
     \onslide<13->{\node[scale=.4,above right,yshift=3mm] (pingu) at(dit.north west) {\usebox\pinguB};
-        \node[right=.2mm,gray,scale=.66,text width=\dimexpr\wd\pinguA-.66\wd\pinguB-.2mm] at(pingu.east) {Falls das Array zu Beginn nur einen oder keinen Merge brauchen würde.};
+        \node[right=.2mm,gray,scale=.66,text width=\dimexpr\wd\pinguA-.66\wd\pinguB-.2mm] at(pingu.east) {In case the array would need only one merge, or none at all, to begin with.};
     }
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[c]{Iteratives Split\hfill\textbf{\color{shadeA}III}}
+\begin{frame}[c]{Iterative Split\hfill\textbf{\color{shadeA}III}}
 \hspace*{8.5em}\onslide<3->{\scalebox{.875}{\begin{tikzpicture}
 \foreach[count=\i] \a in {6, 3, 8, 7, 5, 4, 1} {
     \node[lblock, minimum width=6mm] (\a) at (\i, 0) {\a};
@@ -527,7 +527,7 @@ void sort(int[] arr) \{^^J
     \draw[shade\c,line width=.33mm] ([yshift=1mm]\b.north west) to[edge node={node[above,gray!65!white,scale=.75] {\k} }] ([yshift=1mm]\b.north east);
 }}
 \onslide<5->{
-    \draw[Kite-,gray!39!white] (1.north) to[bend left] ++(3mm,6mm) node[right,gray,scale=.66,align=left] {Hier ist \T{left = 6} und\\damit \(\text{\T{left}} \not< n = 6\).};
+    \draw[Kite-,gray!39!white] (1.north) to[bend left] ++(3mm,6mm) node[right,gray,scale=.66,align=left] {Here \T{left = 6} and\\therefore \(\text{\T{left}} \not< n = 6\).};
 }
 \pgfonlayer{background}
 \onslide<3->{\draw[line cap=butt,gray!39!white,line width=1mm] (6.east) -- (1.west);}
@@ -543,7 +543,7 @@ void sort(int[] arr) \{^^J
     \draw[shade\e,line width=.33mm] ([yshift=1mm]\c.north west) to[edge node={node[above,gray!65!white,scale=.75] (k-\i) {\k} }] ([yshift=1mm]\d.north east);
 }}
 \onslide<8->{
-    \draw[Kite-,gray!39!white] (k-2.north east) to[bend left] ++(3mm,2mm) node[right,gray,scale=.66,align=left] {Hier rettet uns\\\bjava{Math::min}.};
+    \draw[Kite-,gray!39!white] (k-2.north east) to[bend left] ++(3mm,2mm) node[right,gray,scale=.66,align=left] {Here \bjava{Math::min}\\saves us.};
 }
 \pgfonlayer{background}
 \onslide<6->{\draw[line cap=butt,gray!39!white,line width=1mm] (3.east) -- (1.west);}
@@ -560,7 +560,7 @@ void sort(int[] arr) \{^^J
     \draw[shade\e,line width=.33mm] ([yshift=1mm]\c.north west) to[edge node={node[above,gray!65!white,scale=.75] (k-\i) {\k} }] ([yshift=1mm]\d.north east);
 }}
 \onslide<11->{
-    \draw[Kite-,gray!39!white] (k-1.north east) to[bend left] ++(3mm,2mm) node[right,gray,scale=.66,align=left] {Danke \bjava{Math::min}.};
+    \draw[Kite-,gray!39!white] (k-1.north east) to[bend left] ++(3mm,2mm) node[right,gray,scale=.66,align=left] {Thanks, \bjava{Math::min}.};
 }
 \pgfonlayer{background}
 \onslide<9->{\draw[line cap=butt,gray!39!white,line width=1mm] (3.east) -- (5.west);}
@@ -583,34 +583,34 @@ void sort(int[] arr) \{^^J
 \end{tikzpicture}}}
 \begin{tikzpicture}[overlay,remember picture]
     \node[above right=.25cm,yshift=.5cm,scale=.66,rounded corners=2pt,fill=gray!8!white] (cd) at (current page.south west) {\usebox\pinguA};
-    \onslide<2->{\node[above=1cm,text width=\wd\pinguA,align=center] (dit) at (cd.north) {Was passiert, wenn die Länge keine Zweierpotenz ist?};}
+    \onslide<2->{\node[above=1cm,text width=\wd\pinguA,align=center] (dit) at (cd.north) {What happens if the length is not a power of two?};}
 \end{tikzpicture}
 \end{frame}
 
-\subsection{Festzuhalten bleibt}
-\begin{frame}[c]{Es bleibt festzuhalten\ldots}
+\subsection{What remains}
+\begin{frame}[c]{What remains to be noted\ldots}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item Der zusätzliche Speicher ist nun gänzlich in \(\O(1)\)
-    \item Aber die Laufzeit ist nun in \(\O(n^2)\)\smallskip\par
+    \item The additional memory is now entirely in \(\O(1)\)
+    \item But the runtime is now in \(\O(n^2)\)\smallskip\par
     \begin{itemize}
         \itemsep6pt
-        \item Dazu trägt der iterative Sort \say{nur} \(\O(n \log n)\) bei
-        \item Die Komplexität entspringt dem Merge\ldots
+        \item The iterative sort contributes \say{only} \(\O(n \log n)\) to that
+        \item The complexity springs from the merge\ldots
     \end{itemize}
 \end{itemize}
 \end{frame}
-\section{Abschluss}
+\section{Conclusion}
 \SidebarCite{dive:merge-sorted-arrays}
 \SidebarCite{book:algorithms}
 \SidebarCite{dive:parallel-merge}
 \SidebarCite{dive:natural-mergesort}
-\begin{frame}{Abschließendes}
+\begin{frame}{Closing Remarks}
 \begin{itemize}[<+(1)->]
     \itemsep12pt
-    \item (Vermutlich) geht nicht unter \(\O(n \log^2(n))\)
-    \item Dies erreicht man durch eine Shell-Sort-Inspiration
-    \item Es gibt viele weitere Derivate, wie den \say{Natural Mergesort}\ldots
+    \item (Presumably) there is nothing below \(\O(n \log^2(n))\)
+    \item That bound is reached with a Shell-Sort-inspired approach
+    \item There are many more derivatives, such as the \say{Natural Mergesort}\ldots
 \end{itemize}
 \end{frame}
 \SidebarReset

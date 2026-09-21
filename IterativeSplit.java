@@ -4,8 +4,8 @@ class IterativeSplit {
 
   static void merge(int[] arr, int l, int m, int r) {
     int l2 = m + 1;
-    // anstelle dieses Tests können wir auch mit Math::min
-    // bei sort(int[]) garantieren, dass m < r:
+    // instead of this test, sort(int[]) can also use Math::min
+    // to guarantee m < r:
     // int mid = Math.min(left + len - 1, n - 1);
     if (arr[m] <= arr[l2 > r ? r : l2]) return;
 
